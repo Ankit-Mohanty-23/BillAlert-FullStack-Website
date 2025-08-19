@@ -1,3 +1,8 @@
+<h1 align="center">🚧 Work in Progress 🚧</h1>
+
+> **Note:** This project is currently under development.
+
+
 # 🚀 BillAlert
 
 ## 📝 Problem Statement
