@@ -53,7 +53,7 @@ const sendMail = (bill, clientEmail, clientName) => {
 
 
   const mailOptions = {
-    from: 'BillAlert <noreply@billalert.com>',
+    from: 'BillAlert',
     to: clientEmail,
     subject: `BillAlert Payment Reminder: ${
       bill.name

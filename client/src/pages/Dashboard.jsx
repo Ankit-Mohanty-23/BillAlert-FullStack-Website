@@ -395,6 +395,18 @@ export default function Dashboard() {
           )}
         </div>
       </div>
+      {/* Footer */}
+      <footer className="px-6 py-8 bg-slate-800/30 backdrop-blur-sm border-b border-purple-400/20">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="flex items-center justify-center space-x-2 mb-2">
+            <Bell className="h-6 w-6 text-purple-400" />
+            <span className="text-xl font-semibold text-white">BillAlert</span>
+          </div>
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} BillAlert
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import cors from "cors";
 import connectdb from "./database/db.js";
 import clientRouter from "./routes/clientRoutes.js";
 import billRouter from "./routes/billRoutes.js";
+import paymentRouter from "./routes/paymentsRoute.js";
 import "./utils/createEmail.js";
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use("/client", clientRouter);
 app.use("/bill", billRouter);
+app.use("/payments", paymentRouter);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
