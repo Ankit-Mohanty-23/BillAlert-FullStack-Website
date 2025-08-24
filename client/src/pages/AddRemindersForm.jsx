@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Bell, Calendar, DollarSign, Tag, Clock, FileText, ArrowLeft, Plus } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router';
-import axios from 'axios';
+import apiService from "../services/apiService";
 
 export default function AddRemindersForm() {
 
@@ -64,7 +64,7 @@ export default function AddRemindersForm() {
   const handleSubmit = async () => {
     if (validateForm()) {
       try{
-        await axios.post(`http://localhost:5000/bill/create/${id}`, formData);
+        await apiService.post(`/bill/create/${id}`, formData);
         alert('Reminder created successfully!');
         navigate(-1);
       }catch(err){

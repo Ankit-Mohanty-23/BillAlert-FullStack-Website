@@ -23,7 +23,7 @@ import {
   Settings,
 } from "lucide-react";
 import { Link, useParams } from "react-router";
-import axios from "axios";
+import apiService from "../services/apiService";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -49,11 +49,9 @@ export default function Dashboard() {
     const fetchBills = async () => {
       try {
         setErrorMessage("");
-        const clientName = await axios.get(
-          `http://localhost:5000/client/${id}`
-        );
+        const clientName = await apiService.get(`/client/${id}`);
         setUserName(clientName.data.data.fullName);
-        const response = await axios.get(`http://localhost:5000/bill/${id}`);
+        const response = await apiService.get(`/bill/${id}`);
         setReminders(response.data);
       } catch (error) {
         console.log("Failed to fetch bills: ", error);
@@ -121,10 +119,10 @@ export default function Dashboard() {
   const handleMarkComplete = async (reminderID) => {
     try {
       setErrorMessage(""); // Clear any existing error message
-      await axios.delete(`http://localhost:5000/bill/${id}/${reminderID}`);
+      await apiService.delete(`/bill/${id}/${reminderID}`);
       showCustomAlert("success", "Payment marked as complete!");
       // Refresh reminders after marking complete
-      const response = await axios.get(`http://localhost:5000/bill/${id}`);
+      const response = await apiService.get(`/bill/${id}`);
       setReminders(response.data);
     } catch (error) {
       console.log("Failed to mark reminder as complete: ", error);
@@ -335,7 +333,7 @@ export default function Dashboard() {
                               ? "opacity-100 translate-y-0"
                               : "opacity-0 -translate-y-2"
                           }`}
-                        > 
+                        >
                           <div className="grid md:grid-cols-2 gap-4">
                             <div>
                               <label className="block text-sm font-medium text-gray-400 mb-1">

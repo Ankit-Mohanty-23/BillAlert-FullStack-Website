@@ -17,7 +17,7 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-import axios from "axios";
+import apiService from "../services/apiService";
 
 export default function FinancePage() {
   const navigate = useNavigate();
@@ -28,8 +28,8 @@ export default function FinancePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/payments/${id}`
+        const response = await apiService.get(
+          `/payments/${id}`
         );
         setSpendingData(response.data);
       } catch (error) {

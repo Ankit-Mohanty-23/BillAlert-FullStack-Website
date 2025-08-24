@@ -3,7 +3,7 @@ import { Eye, EyeOff, Mail, Lock, User, Bell } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);
@@ -294,4 +294,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
