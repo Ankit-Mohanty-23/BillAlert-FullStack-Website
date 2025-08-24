@@ -69,7 +69,7 @@ const LoginPage = () => {
   };
 
   const getId = async (email) => {
-    const response = await axios.post(`http://localhost:5000/client`, { email })
+    const response = await axios.post(`${import.meta.env.REACT_APP_API_URL}/client`, { email })
     return response.data.id;
   }
 
@@ -78,12 +78,12 @@ const LoginPage = () => {
     if (validateForm()) {
       try {
         if (!isLogin) {
-          await axios.post(`http://localhost:5000/client/signup`, formData);
+          await axios.post(`${import.meta.env.REACT_APP_API_URL}/client/signup`, formData);
           setIsLogin(true);
           alert(`Signup successful!`);
         } else {
           const response = await axios.post(
-            `http://localhost:5000/client/login`,
+            `${import.meta.env.REACT_APP_API_URL}/client/login`,
             formData
           );
           localStorage.setItem("token", response.data.token); 

@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const whiteList = [procress.env.FRONTEND_URL];
+const whiteList = [process.env.FRONTEND_URL];
 const corsOption = {
   origin: (origin, callback) => {
     if(whiteList.indexOf(origin !== -1 || !origin)){
