@@ -34,15 +34,15 @@ const App = () => {
                 <ReminderPage />
               </ProtectedRoute>
             }
-            />
+          />
           <Route 
             path='/finance/:id' 
             element={
               <ProtectedRoute>
                 <FinancePage />
               </ProtectedRoute>
-            } />
-
+            }
+          />
         </Routes>
       </main>
     </BrowserRouter>

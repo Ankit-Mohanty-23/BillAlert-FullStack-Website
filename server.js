@@ -6,12 +6,24 @@ import clientRouter from "./routes/clientRoutes.js";
 import billRouter from "./routes/billRoutes.js";
 import paymentRouter from "./routes/paymentsRoute.js";
 import "./utils/createEmail.js";
-
+  
 dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+const whiteList = [procress.env.FRONTEND_URL];
+const corsOption = {
+  origin: (origin, callback) => {
+    if(whiteList.indexOf(origin !== -1 || !origin)){
+      callback(null, true);
+    }else{
+      callback(new error("not allowed to cors"));
+    }
+  },
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOption));
 
 app.use("/client", clientRouter);
 app.use("/bill", billRouter);
