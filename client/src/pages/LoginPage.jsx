@@ -69,26 +69,32 @@ const LoginPage = () => {
   };
 
   const getId = async (email) => {
-    const response = await axios.post(`${import.meta.env.REACT_APP_API_URL}/client`, { email })
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/client`,
+      { email }
+    );
     return response.data.id;
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       try {
         if (!isLogin) {
-          await axios.post(`${import.meta.env.REACT_APP_API_URL}/client/signup`, formData);
+          await axios.post(
+            `${import.meta.env.VITE_API_URL}/client/signup`,
+            formData
+          );
           setIsLogin(true);
           alert(`Signup successful!`);
         } else {
           const response = await axios.post(
-            `${import.meta.env.REACT_APP_API_URL}/client/login`,
+            `${import.meta.env.VITE_API_URL}/client/login`,
             formData
           );
-          localStorage.setItem("token", response.data.token); 
-          const clientId =  await getId(formData.email); 
-          navigate(`/dashboard/${clientId}`);        
+          localStorage.setItem("token", response.data.token);
+          const clientId = await getId(formData.email);
+          navigate(`/dashboard/${clientId}`);
           alert("Login successful!");
         }
       } catch (err) {

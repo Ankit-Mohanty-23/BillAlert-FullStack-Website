@@ -114,7 +114,7 @@ const sendMail = (bill, clientEmail, clientName) => {
 };
 
 //setting cron schedule
-cron.schedule("30 16 * * *", async () => {
+cron.schedule("00 09 * * *", async () => {
   console.log("Checking bill for reminder...");
 
   try {
